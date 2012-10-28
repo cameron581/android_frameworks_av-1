@@ -144,6 +144,12 @@ ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS),true)
        LOCAL_SRC_FILES  += ExtendedWriter.cpp
 endif #TARGET_ENABLE_AV_ENHANCEMENTS
 
+ifeq ($(TARGET_QCOM_LEGACY_OMX),true)
+    LOCAL_CFLAGS += -DQCOM_LEGACY_OMX
+    LOCAL_CFLAGS += -DQCOM_LEGACY_MMPARSER
+    LOCAL_SRC_FILES += ExtendedMediaDefs.cpp
+endif
+
 LOCAL_SRC_FILES += \
         chromium_http_stub.cpp
 LOCAL_CPPFLAGS += -DCHROMIUM_AVAILABLE=1
