@@ -34,7 +34,6 @@
 #define DEFAULT_TUNNEL_BUFFER_COUNT 4
 
 namespace android {
-
 const static int64_t WaitLockEventTimeOutNs = 1000000000LL;
 static void AudioRecordCallbackFunction(int event, void *user, void *info) {
     AudioSource *source = (AudioSource *) user;

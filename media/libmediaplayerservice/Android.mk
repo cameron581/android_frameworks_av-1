@@ -38,6 +38,7 @@ LOCAL_SHARED_LIBRARIES :=       \
     libstagefright_omx          \
     libstagefright_wfd          \
     libutils                    \
+    libdl                       \
     libvorbisidec               \
 
 LOCAL_STATIC_LIBRARIES :=       \
@@ -55,6 +56,17 @@ LOCAL_C_INCLUDES :=                                                 \
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
     LOCAL_C_INCLUDES += $(TOP)/hardware/qcom/media/mm-core/inc
 endif
+
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+    ifneq ($(TARGET_QCOM_MEDIA_VARIANT),)
+    LOCAL_C_INCLUDES += \
+            $(TOP)/hardware/qcom/media-$(TARGET_QCOM_MEDIA_VARIANT)/mm-core/inc
+    else
+    LOCAL_C_INCLUDES += \
+            $(TOP)/hardware/qcom/media/mm-core/inc
+    endif
+endif
+
 LOCAL_MODULE:= libmediaplayerservice
 
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS),true)
